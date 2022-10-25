@@ -45,10 +45,12 @@ setTimeout(() => {
   promises.then((value) => {
     console.log(value);
   });
-}, 3000);
-
-setTimeout(() => {
+  
   promises.catch((value) => {
     console.log(value);
   });
+}, 3000);
+
+setTimeout(() => {
+  
 }, 3000);
