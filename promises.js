@@ -1,35 +1,46 @@
-// Main promise class
-
-class Mypromises {
-  constructor(resol, rej) {
-    this.resolves = resol;
-    this.rejects = rej;
+// Object constructor fn
+function MyPromise(exc) {
+  let value = null;
+  let state = "Pending";
+  function resolve(res) {
+    state = "Fulfiled";
+    value = res;
+    console.log(value);
+  }
+  function reject(rej) {
+    state = "Rejected";
+    value = rej;
   }
 
-  resolves() {
-    return this.resolve;
-  }
-  rejects() {
-    return this.reject;
-  }
+  this.then = function (Scallback) {
+    if (state === "Fulfiled") {
+      Scallback(value);
+    }
+  };
+
+  this.catch = function (Fcallback) {
+    if (state === "Rejected") {
+      Fcallback(value);
+    }
+  };
+
+  exc(resolve, reject);
 }
-
-const resolve = (res) => {
-  return res;
+const excutorfn = (res, rej) => {
+  if (Math.random() > 0.5) {
+    res("Promise is Resolved:");
+  } else {
+    rej("Promise is Reject");
+  }
 };
-const reject = (rej) => {
-  return rej;
-};
 
-// Here  testing Promises.......
-const obj = new Mypromises(resolve, reject);
+// Create a Peromise object
+const promises = new MyPromise(excutorfn);
 
-if (Math.random() > 0.5) {
-  setTimeout(() => {
-    console.log(obj.resolves("Promise is resolved"));
-  }, 3000);
-} else {
-  setTimeout(() => {
-    console.log(obj.rejects("Promise is rejected"));
-  }, 3000);
-}
+promises.then((value) => {
+  console.log(value);
+});
+
+promises.catch((value) => {
+  console.log(value);
+});
