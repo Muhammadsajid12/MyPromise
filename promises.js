@@ -4,7 +4,7 @@ function MyPromise(exc) {
   let state = "Pending";
   function resolve(res) {
     state = "Fulfiled";
-//     let's suppose reslve take tow minuts to take value..
+//     let's suppose resolve take tow sec to take value..
     setTimeout(() => {
       value = res;
       console.log(value);
