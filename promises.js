@@ -39,7 +39,7 @@ const excutorfn = (res, rej) => {
   }
 };
 
-// Create a Person object
+// Create a Promise object
 const promises = new MyPromise(excutorfn);
 
 setTimeout(() => {
