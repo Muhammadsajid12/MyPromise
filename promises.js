@@ -4,6 +4,7 @@ function MyPromise(exc) {
   let state = "Pending";
   function resolve(res) {
     state = "Fulfiled";
+//     let's suppose reslve take tow minuts to take value..
     setTimeout(() => {
       value = res;
       console.log(value);
@@ -40,7 +41,7 @@ const excutorfn = (res, rej) => {
 
 // Create a Person object
 const promises = new MyPromise(excutorfn);
-// Display age
+
 setTimeout(() => {
   promises.then((value) => {
     console.log(value);
