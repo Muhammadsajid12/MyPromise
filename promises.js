@@ -1,4 +1,4 @@
-// Object constructor fn
+
 function MyPromise(exc) {
   let value = null;
   let state = "Pending";
@@ -28,19 +28,27 @@ function MyPromise(exc) {
 }
 const excutorfn = (res, rej) => {
   if (Math.random() > 0.5) {
-    res("Promise is Resolved:");
+    setTimeout(() => {
+      res("Promise is Resolved:");
+    }, 2000);
   } else {
-    rej("Promise is Reject");
+    setTimeout(() => {
+      rej("Promise is Reject");
+    }, 2000);
   }
 };
 
-// Create a Peromise object
+// Create a Person object
 const promises = new MyPromise(excutorfn);
+// Display age
+setTimeout(() => {
+  promises.then((value) => {
+    console.log(value);
+  });
+}, 3000);
 
-promises.then((value) => {
-  console.log(value);
-});
-
-promises.catch((value) => {
-  console.log(value);
-});
+setTimeout(() => {
+  promises.catch((value) => {
+    console.log(value);
+  });
+}, 3000);
