@@ -4,12 +4,16 @@ function MyPromise(exc) {
   let state = "Pending";
   function resolve(res) {
     state = "Fulfiled";
-    value = res;
-    console.log(value);
+    setTimeout(() => {
+      value = res;
+      console.log(value);
+    }, 2000);
   }
   function reject(rej) {
     state = "Rejected";
-    value = rej;
+    setTimeout(() => {
+      value = rej;
+    }, 2000);
   }
 
   this.then = function (Scallback) {
@@ -28,19 +32,15 @@ function MyPromise(exc) {
 }
 const excutorfn = (res, rej) => {
   if (Math.random() > 0.5) {
-    setTimeout(() => {
-      res("Promise is Resolved:");
-    }, 2000);
+    res("Promise is Resolved:");
   } else {
-    setTimeout(() => {
-      rej("Promise is Reject");
-    }, 2000);
+    rej("Promise is Reject");
   }
 };
 
-// Create a promise object....
+// Create a Person object
 const promises = new MyPromise(excutorfn);
-
+// Display age
 setTimeout(() => {
   promises.then((value) => {
     console.log(value);
