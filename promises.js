@@ -40,7 +40,7 @@ const excutorfn = (res, rej) => {
 
 // Create a promise object....
 const promises = new MyPromise(excutorfn);
-// Display age
+
 setTimeout(() => {
   promises.then((value) => {
     console.log(value);
